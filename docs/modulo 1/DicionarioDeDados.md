@@ -4,6 +4,7 @@
 |------------|--------|-----------|-------|
 | 21/07/2024 | 1.0 | Criação do documento | [Kathlyn Lara Murussi](https://github.com/klmurussi) |
 | 21/07/2024 | 1.1 | Adição das tabelas Jogador, Nivel, Inventario, Local e leva | [Kathlyn Lara Murussi](https://github.com/klmurussi) |
+| 21/07/2024 | 1.2 | Adição das tabelas Regiao, Clima e Instancia_Item | [Sebastián Zuzunaga](https://github.com/sebazac332) |
 
 # Dicionário de Dados
 São informações sobre os dados que estão sendo utilizados no projeto.
@@ -90,6 +91,14 @@ Descrição: Tabela que representa os itens/objetos que o jogador pode adquirir 
 | peso | int | NN | Peso do item |
 | preco | int | NN | Valor do item para vender ou comprar |
 
+## Tabela: Instancia_Item
+Descrição: Tabela que representa as instâncias dos objetos que o jogador pode obter.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| Id | int | PK, AI, NN | Identificador único da instância do objeto |
+| idItem | int | FK, NN | Identificador do item |
+
 ## Tabela: NaoConsumivel
 Descrição: Tabela que representa os itens não consumíveis que o jogador pode equipar.
 
@@ -156,9 +165,6 @@ Descrição: Tabela que representa as magias que o jogador pode aprender e usar.
 | multEfeito | int | NN | Multiplicador do efeito da magia |
 | requerSabedoria | int | NN | Valor de sabedoria necessário para aprender a magia |
 
-
-
-
 ## Tabela: Missao
 Descrição: Tabela que representa as missões que o jogador pode aceitar e completar.
 
@@ -216,5 +222,23 @@ Descrição: Tabela que representa os inimigos que o jogador pode enfrentar.
 | defesa | int | NN | Valor da defesa do inimigo |
 | ataque | int | NN | Valor do ataque do inimigo |
 
-## 
+## Tabela: Clima
+Descrição: Tabela que representa o clima que tem a região em que o jogador está.
 
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| Id | int | PK, AI, NN | Identificador única do clima |
+| Descricao | varchar(50) | NN | Descrição do clima e dos seus efeitos no ambiente |
+| Nome | varchar(20) | NN | Nome do clima que atualmente está na região |
+| Tipo_vantagem | char(1) | NN | Aumenta a eficácia de um tipo de magia, 1 - Ataque, 2 - Defesa, 3 - Cura, 4 - Todas, 5 - Nenhuma|
+| Tipo_desvantagem | char(1) | NN | Diminuição a eficácia de um tipo de magia, 1 - Ataque, 2 - Defesa, 3 - Cura, 4 - Todas, 5 - Nenhuma |
+
+## Tabela: Regiao
+Descrição: Tabela que representa as regiões existentes no jogo.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| Id | int | PK, AI, NN | Identificador única da região |
+| idClima | FK, NN | NN | Identificação do clima atualmente na região |
+| Nome | varchar(20) | NN | Nome da região |
+| Descricao | varchar(50) | NN | Descrição das especificidades da região e pontos de interesse |
