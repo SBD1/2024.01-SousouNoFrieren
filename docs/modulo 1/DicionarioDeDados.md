@@ -5,6 +5,7 @@
 | 21/07/2024 | 1.0 | Criação do documento | [Kathlyn Lara Murussi](https://github.com/klmurussi) |
 | 21/07/2024 | 1.1 | Adição das tabelas Jogador, Nivel, Inventario, Local e leva | [Kathlyn Lara Murussi](https://github.com/klmurussi) |
 | 21/07/2024 | 1.2 | Adição das tabelas Regiao, Clima e Instancia_Item | [Sebastián Zuzunaga](https://github.com/sebazac332) |
+| 21/07/2024 | 1.3 | Adição das tabelas que faltam | [Kathlyn Lara Murussi](https://github.com/klmurussi) |
 
 # Dicionário de Dados
 São informações sobre os dados que estão sendo utilizados no projeto.
@@ -70,6 +71,15 @@ Descrição: Tabela que representa os locais que o jogador pode visitar.
 | reqEntrada | ??? | NN | Requisitos para entrar no local, como nível, itens, etc. |
 | tipo | char(1) | NN | Tipo do local, 1 - Cidade, 2 - Floresta, 3 - Caverna, 4 - Castelo |
 
+## Tabela: esta
+Descrição: Tabela que representa o local em que o jogador está.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idJogador | int | FK, NN | Identificador do jogador |
+| posX | int | FK, NN | Posição X do local |
+| posY | int | FK, NN | Posição Y do local |
+
 ## Tabela: leva
 Descrição: um local leva a outro local.
 
@@ -98,6 +108,16 @@ Descrição: Tabela que representa as instâncias dos objetos que o jogador pode
 |----------|------|------------|-----------|
 | Id | int | PK, AI, NN | Identificador único da instância do objeto |
 | idItem | int | FK, NN | Identificador do item |
+
+## Tabela: guarda
+Descrição: Tabela que representa os itens que o jogador possui no inventário.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idInventario | int | FK, NN | Identificador do inventário |
+| idItem | int | FK, NN | Identificador do item |
+| quantidade | int | NN | Quantidade do item no inventário |
+| idInstancia_Item | int | FK, NN | Identificador da instância do item |
 
 ## Tabela: NaoConsumivel
 Descrição: Tabela que representa os itens não consumíveis que o jogador pode equipar.
@@ -177,6 +197,24 @@ Descrição: Tabela que representa as missões que o jogador pode aceitar e comp
 | recExp | int | NN | Recompensa em experiência da missão |
 | idNPC | int | FK, NN | Identificador do NPC que deu a missão |
 
+## Tabela: faz
+Descrição: Tabela que representa as missões que o jogador pode aceitar e completar.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idJogador | int | FK, NN | Identificador do jogador |
+| idMissao | int | FK, NN | Identificador da missão |
+| status | char(1) | NN | Status da missão, 1 - Aceita, 2 - Em andamento, 3 - Concluída |
+
+## Tabela: recompensa
+Descrição: Tabela que representa as recompensas que o jogador pode receber ao completar uma missão.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idMissao | int | FK, NN | Identificador da missão |
+| idItem | int | FK, NN | Identificador do item |
+| idInstancia_Item | int | FK, NN | Identificador da instância do item |
+
 ## Tabela: NPC
 Descrição: Tabela que representa os NPCs que o jogador pode interagir.
 
@@ -195,6 +233,28 @@ Descrição: Tabela que representa as instâncias dos NPCs que o jogador pode in
 | id | int | PK, AI, NN | Identificador único da instância do NPC |
 | idNPC | int | FK, NN | Identificador do NPC |
 
+## Tabela: aparece
+Descrição: Tabela que representa os NPCs que aparecem em determinados locais.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idNPC | int | FK, NN | Identificador do NPC |
+| posX | int | FK, NN | Posição X do local |
+| posY | int | FK, NN | Posição Y do local |
+| idInstanciaNPC | int | FK, NN | Identificador da instância do NPC |
+
+## Tabela: interage
+Descrição: Tabela que representa as interações que o jogador pode ter com os NPCs.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idJogador | int | FK, NN | Identificador do jogador |
+| idNPC | int | FK, NN | Identificador do NPC |
+| idInstanciaNPC | int | FK, NN | Identificador da instância do NPC |
+| texto | varchar(100) | NN | Texto da interação |
+| numDialogo | int | NN | Número do diálogo da interação |
+| status | char(1) | NN | Status da interação, 1 - Iniciada, 2 - Em andamento, 3 - Concluída |
+
 ## Tabela: ProvedorDeMissao
 Descrição: Tabela que representa os provedores de missão que o jogador pode interagir.
 
@@ -210,6 +270,24 @@ Descrição: Tabela que representa os vendedores que o jogador pode interagir.
 | idNPC | int | PK, FK, NN | Identificador do NPC |
 | dinheiro | int | NN | Quantidade de dinheiro que o vendedor possui |
 
+## Tabela: vende
+Descrição: Tabela que representa os itens que o vendedor possui para vender.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idNPC | int | FK, NN | Identificador do NPC |
+| idItem | int | FK, NN | Identificador do item |
+|idInstancia_Item | int | FK, NN | Identificador da instância do item |
+
+## Tabela: compra
+Descrição: Tabela que representa os itens que o jogador comprou do vendedor.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idItem | int | FK, NN | Identificador do item |
+| idInstancia_Item | int | FK, NN | Identificador da instância do item |
+| idNPC | int | FK, NN | Identificador do NPC |
+
 ## Tabela: Inimigo
 Descrição: Tabela que representa os inimigos que o jogador pode enfrentar.
 
@@ -221,6 +299,14 @@ Descrição: Tabela que representa os inimigos que o jogador pode enfrentar.
 | manaMaxima | int | NN | Mana máxima do inimigo |
 | defesa | int | NN | Valor da defesa do inimigo |
 | ataque | int | NN | Valor do ataque do inimigo |
+
+## Tabela: usa
+Descrição: Tabela que representa as magias que o inimigo pode usar.
+
+| Atributo | Tipo | Restrições | Descrição |
+|----------|------|------------|-----------|
+| idNPC | int | FK, NN | Identificador do NPC |
+| magiaNome | varchar(20) | FK, NN | Nome da magia que o inimigo usa |
 
 ## Tabela: Clima
 Descrição: Tabela que representa o clima que tem a região em que o jogador está.
