@@ -13,5 +13,5 @@ A exploração é um aspecto fundamental, completa masmorras, ajuda as pessoas c
 </p>
 
 ## Entregas
-* Modulo 1:
-*   Mudar para a branch modulo1
+* Modulo 1
+    * Mudar para a branch modulo1
