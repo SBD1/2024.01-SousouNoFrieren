@@ -11,3 +11,7 @@ Com um combate baseado em turnos se requererá estratégia para poder obter vit�
 <p style="text-indent: 2cm; text-align: justify;">
 A exploração é um aspecto fundamental, completa masmorras, ajuda as pessoas com suas missões e investiga locais interessantes para subir seu nível e assim ter uma maior probabilidade de sobreviver à intempérie.
 </p>
+
+## Entregas
+* Modulo 1:
+*   Mudar para a branch modulo1
