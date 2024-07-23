@@ -13,7 +13,7 @@ A exploração é um aspecto fundamental, completa masmorras, ajuda as pessoas c
 </p>
 
 ## Modulo 1
-Diagrama entidade relacao
-Diagrama relacional
-[Dicionário de dados](./docs/modulo%201/DicionarioDeDados.md)
-[Apresentação](https://unbbr-my.sharepoint.com/personal/211006957_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F211006957%5Faluno%5Funb%5Fbr%2FDocuments%2FBase%20de%20dados%20%2D%20modulo1%2Emp4&referrer=OfficeHome%2EWeb&referrerScenario=UPLOAD)
+Diagrama entidade relacao<br>
+Diagrama relacional<br>
+[Dicionário de dados](./docs/modulo%201/DicionarioDeDados.md)<br>
+[Apresentação](https://unbbr-my.sharepoint.com/personal/211006957_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F211006957%5Faluno%5Funb%5Fbr%2FDocuments%2FBase%20de%20dados%20%2D%20modulo1%2Emp4&referrer=OfficeHome%2EWeb&referrerScenario=UPLOAD)<br>
