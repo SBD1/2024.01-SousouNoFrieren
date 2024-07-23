@@ -20,5 +20,5 @@ A exploração é um aspecto fundamental, completa masmorras, ajuda as pessoas c
 ## Entregas
 * Modulo 1
     * [Diagrama Entidade-Relacionamento](./docs/modulo%201/DER.md)<br>
-    * Diagrama relacional<br>
+    * [Diagrama relacional](./docs/modulo%201/Relacional.md)<br>
     * [Dicionário de dados](./docs/modulo%201/DicionarioDeDados.md)<br>
