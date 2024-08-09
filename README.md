@@ -1,5 +1,9 @@
 # 2024.01-SousouNoFrieren
 
+<div align="center"> 
+<img src="docs/images/capa.jpeg" width="350px"></img>
+</div>
+
 </center>
 
 <p style="text-indent: 2cm; text-align: justify;">
