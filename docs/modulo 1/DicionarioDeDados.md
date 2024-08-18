@@ -253,7 +253,7 @@ Descrição: Tabela que representa as interações que o jogador pode ter com os
 | idNPC | int | FK, NN | Identificador do NPC |
 | idInstanciaNPC | int | FK, NN | Identificador da instância do NPC |
 | texto | varchar(100) | NN | Texto da interação |
-| numDialogo | int | NN | Número do diálogo da interação |
+| numDialogo | int | NN, PK, AI | Número do diálogo da interação |
 | status | char(1) | NN | Status da interação, 1 - Iniciada, 2 - Em andamento, 3 - Concluída |
 
 ## Tabela: ProvedorDeMissao
