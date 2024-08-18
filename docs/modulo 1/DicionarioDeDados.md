@@ -71,7 +71,6 @@ Descrição: Tabela que representa os locais que o jogador pode visitar.
 | reqEntrada | int | FK | Item necessário para entrar no local |
 | tipo | char(1) | NN | Tipo do local, 1 - Cidade, 2 - Floresta, 3 - Caverna, 4 - Castelo |
 | idRegiao | int | NN, FK | Região onde está o local |
-| idClima | int | NN, FK | Clima presente na região |
 
 ## Tabela: esta
 Descrição: Tabela que representa o local em que o jogador está.
