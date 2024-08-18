@@ -68,7 +68,7 @@ Descrição: Tabela que representa os locais que o jogador pode visitar.
 | posY | int | PK, NN | Posição Y do local |
 | nome | varchar(20) | NN, UN | Nome do local|
 | descricao | varchar(100) | NN | Descrição do local |
-| reqEntrada | int | NN | Requisitos para entrar no local, como nível, itens, etc. |
+| reqEntrada | int | FK | Item necessário para entrar no local |
 | tipo | char(1) | NN | Tipo do local, 1 - Cidade, 2 - Floresta, 3 - Caverna, 4 - Castelo |
 
 ## Tabela: esta
