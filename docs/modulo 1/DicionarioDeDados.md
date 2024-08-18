@@ -325,6 +325,6 @@ Descrição: Tabela que representa as regiões existentes no jogo.
 | Atributo | Tipo | Restrições | Descrição |
 |----------|------|------------|-----------|
 | Id | int | PK, AI, NN | Identificador única da região |
-| idClima | FK, NN | NN | Identificação do clima atualmente na região |
+| idClima | int | FK, NN | Identificação do clima atualmente na região |
 | Nome | varchar(20) | NN | Nome da região |
 | Descricao | varchar(50) | NN | Descrição das especificidades da região e pontos de interesse |
