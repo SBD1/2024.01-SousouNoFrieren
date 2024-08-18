@@ -68,8 +68,9 @@ Descrição: Tabela que representa os locais que o jogador pode visitar.
 | posY | int | PK, NN | Posição Y do local |
 | nome | varchar(20) | NN, UN | Nome do local|
 | descricao | varchar(100) | NN | Descrição do local |
-| reqEntrada | ??? | NN | Requisitos para entrar no local, como nível, itens, etc. |
+| reqEntrada | int | FK | Item necessário para entrar no local |
 | tipo | char(1) | NN | Tipo do local, 1 - Cidade, 2 - Floresta, 3 - Caverna, 4 - Castelo |
+| idRegiao | int | NN, FK | Região onde está o local |
 
 ## Tabela: esta
 Descrição: Tabela que representa o local em que o jogador está.
@@ -252,7 +253,7 @@ Descrição: Tabela que representa as interações que o jogador pode ter com os
 | idNPC | int | FK, NN | Identificador do NPC |
 | idInstanciaNPC | int | FK, NN | Identificador da instância do NPC |
 | texto | varchar(100) | NN | Texto da interação |
-| numDialogo | int | NN | Número do diálogo da interação |
+| numDialogo | int | NN, PK, AI | Número do diálogo da interação |
 | status | char(1) | NN | Status da interação, 1 - Iniciada, 2 - Em andamento, 3 - Concluída |
 
 ## Tabela: ProvedorDeMissao
@@ -325,6 +326,6 @@ Descrição: Tabela que representa as regiões existentes no jogo.
 | Atributo | Tipo | Restrições | Descrição |
 |----------|------|------------|-----------|
 | Id | int | PK, AI, NN | Identificador única da região |
-| idClima | FK, NN | NN | Identificação do clima atualmente na região |
+| idClima | int | FK, NN | Identificação do clima atualmente na região |
 | Nome | varchar(20) | NN | Nome da região |
 | Descricao | varchar(50) | NN | Descrição das especificidades da região e pontos de interesse |
