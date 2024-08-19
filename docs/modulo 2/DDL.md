@@ -15,17 +15,19 @@ CREATE TABLE Jogador (
     CONSTRAINT jogador_pk PRIMARY KEY(id_jogador),
 	CONSTRAINT sexo_jogador CHECK (tipo IN ('1', '2')),
 	CONSTRAINT jogador_positive_values CHECK ( 
-	vidaMaxima >= 0 
-	AND vidaAtual >= 0 
-	AND manaMaxima >= 0 
-	AND manaAtual >= 0 
-	AND dinheiro >= 0 
-	AND experiencia >= 0 
-	AND defensa >= 0 
-	AND ataque >= 0),
+		vidaMaxima >= 0 
+		AND vidaAtual >= 0 
+		AND manaMaxima >= 0 
+		AND manaAtual >= 0 
+		AND dinheiro >= 0 
+		AND experiencia >= 0 
+		AND defensa >= 0 
+		AND ataque >= 0
+	),
 	CONSTRAINT jogador_max_valores CHECK (
-    vidaMaxima >= vidaAtual AND
-    manaMaxima >= manaAtual)
+		vidaMaxima >= vidaAtual AND
+		manaMaxima >= manaAtual
+	)
 ); 
 
 CREATE TABLE Inventario (
@@ -34,7 +36,14 @@ CREATE TABLE Inventario (
     pesoMaximo int not null,
     pesoAtual int not null,
     CONSTRAINT inventario_pk PRIMARY KEY(id_inventario),
-    CONSTRAINT jogador_fk_inv FOREIGN KEY(id_jogador) REFERENCES Jogador(id_jogador)
+    CONSTRAINT jogador_fk_inv FOREIGN KEY(id_jogador) REFERENCES Jogador(id_jogador),
+    CONSTRAINT chk_inv_valores CHECK (
+		pesoMaximo >= 0 AND 
+		pesoAtual >= 0
+	),
+	CONSTRAINT chk_inv_max_valores CHECK (
+		pesoMaximo >= pesoAtual
+	)
 ); 
 
 CREATE TABLE guarda (
@@ -56,7 +65,16 @@ CREATE TABLE Nivel (
     destreza int not null,
     constituicao int not null,
     CONSTRAINT nivel_pk PRIMARY KEY(idNivel),
-    CONSTRAINT jogador_fk_nivel FOREIGN KEY(idJogador) REFERENCES Jogador(id_jogador)
+    CONSTRAINT jogador_fk_nivel FOREIGN KEY(idJogador) REFERENCES Jogador(id_jogador),
+	CONSTRAINT chk_nivel_valores CHECK (
+		expProximo >= 0 AND
+		sabedoria >= 0 AND
+		forca >= 0 AND
+		carisma >= 0 AND
+		inteligencia >= 0 AND
+		destreza >= 0 AND
+		constituicao >= 0
+	)
 ); 
 
 CREATE TABLE Item (
@@ -65,7 +83,11 @@ CREATE TABLE Item (
     descricao varchar(100) not null,
     peso int not null,
     preco int not null,
-    CONSTRAINT item_pk PRIMARY KEY(idItem)
+    CONSTRAINT item_pk PRIMARY KEY(idItem),
+	CONSTRAINT chk_item_valores CHECK (
+		peso >= 0 AND
+		preco >= 0
+	)
 ); 
 
 CREATE TABLE Instancia_Item (
@@ -78,14 +100,19 @@ CREATE TABLE Instancia_Item (
 CREATE TABLE NaoConsumivel (
 	idItem int not null,
 	estaEquipado char(1) not null,
-    CONSTRAINT item_fk_naocon FOREIGN KEY(idItem) REFERENCES Item(idItem)
+    CONSTRAINT item_fk_naocon FOREIGN KEY(idItem) REFERENCES Item(idItem),
+	CONSTRAINT estaequipado_naoconsumivel CHECK (estaEquipado IN ('1', '2'));
 ); 
 
 CREATE TABLE Arma (
 	idItem int not null,
     ataqueAdd int not null,
     requerForca int not null,
-    CONSTRAINT item_fk_arma FOREIGN KEY(idItem) REFERENCES NaoConsumivel(idItem)
+    CONSTRAINT item_fk_arma FOREIGN KEY(idItem) REFERENCES NaoConsumivel(idItem),
+	CONSTRAINT chk_arma_valores CHECK (
+		ataqueAdd >= 0 AND
+		requerForca >= 0
+	)
 ); 
 
 CREATE TABLE Acessorio (
@@ -95,14 +122,21 @@ CREATE TABLE Acessorio (
     multEfeito int not null,
     CONSTRAINT item_fk_acessorio FOREIGN KEY(idItem) REFERENCES NaoConsumivel(idItem),
 	CONSTRAINT tipo_acessorio CHECK (tipo IN ('1', '2', '3')),
-    CONSTRAINT efeito_acessorio CHECK (efeito IN ('1', '2', '3', '4', '5', '6'))
+    CONSTRAINT efeito_acessorio CHECK (efeito IN ('1', '2', '3', '4', '5', '6')),
+	CONSTRAINT chk_acessorio_valores CHECK (
+		multEfeito >= 0
+	)
 ); 
 
 CREATE TABLE Armadura (
 	idItem int not null,
     defesaAdd int not null,
     requerConstituicao int not null,
-    CONSTRAINT item_fk_armadura FOREIGN KEY(idItem) REFERENCES NaoConsumivel(idItem)
+    CONSTRAINT item_fk_armadura FOREIGN KEY(idItem) REFERENCES NaoConsumivel(idItem),
+	CONSTRAINT chk_armadura_valores CHECK (
+		defesaAdd >= 0 AND
+		requerConstituicao >= 0
+	)
 ); 
 
 CREATE TABLE Consumivel (
@@ -116,7 +150,11 @@ CREATE TABLE Porcao (
     duracao int not null,
     multEfeito int not null,
     CONSTRAINT item_fk_porcao FOREIGN KEY(idItem) REFERENCES Consumivel(idItem),
-    CONSTRAINT efeito_porcao CHECK (efeito IN ('1', '2'))
+    CONSTRAINT efeito_porcao CHECK (efeito IN ('1', '2')),
+	CONSTRAINT chk_porcao_valores CHECK (
+		duracao >= 0 AND
+		multEfeito >= 0
+	)
 ); 
 
 CREATE TABLE Magia_Livro (
@@ -129,7 +167,12 @@ CREATE TABLE Magia_Livro (
     requerSabedoria int not null,
     CONSTRAINT magialivro_pk PRIMARY KEY(nome),
     CONSTRAINT item_fk_magialivro FOREIGN KEY(idItem) REFERENCES Consumivel(idItem),
-    CONSTRAINT tipo_magialivro CHECK (tipo IN ('1', '2', '3'))
+    CONSTRAINT tipo_magialivro CHECK (tipo IN ('1', '2', '3')),
+	CONSTRAINT chk_magialivro_valores CHECK (
+		manaUtilizada >= 0 AND
+		multEfeito >= 0 AND
+		requerSabedoria >= 0
+	)
 );  
 
 CREATE TABLE Clima (
