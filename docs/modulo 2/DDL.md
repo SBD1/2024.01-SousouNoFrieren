@@ -1,7 +1,7 @@
 ```
 
 CREATE TABLE Jogador (
-	id_jogador int not null,
+	id_jogador int AUTO_INCREMENT not null,
     nome varchar(20) not null,
     sexo char(1) not null,
     vidaMaxima int not null,
@@ -16,7 +16,7 @@ CREATE TABLE Jogador (
 ); 
 
 CREATE TABLE Inventario (
-	id_inventario int not null,
+	id_inventario int AUTO_INCREMENT not null,
     id_jogador int not null,
     pesoMaximo int not null,
     pesoAtual int not null,
@@ -33,7 +33,7 @@ CREATE TABLE guarda (
 ); 
 
 CREATE TABLE Nivel (
-	idNivel int not null,
+	idNivel int AUTO_INCREMENT  not null,
     idJogador int not null,
     expProximo int not null,
     sabedoria int not null,
@@ -47,7 +47,7 @@ CREATE TABLE Nivel (
 ); 
 
 CREATE TABLE Item (
-	idItem int not null,
+	idItem int AUTO_INCREMENT not null,
     nome varchar(20) not null,
     descricao varchar(100) not null,
     peso int not null,
@@ -56,7 +56,7 @@ CREATE TABLE Item (
 ); 
 
 CREATE TABLE Instancia_Item (
-	Id int not null,
+	Id int AUTO_INCREMENT not null,
 	idItem int not null,
     CONSTRAINT item_instancia_pk PRIMARY KEY(Id),
     CONSTRAINT item_fk_instancia FOREIGN KEY(idItem) REFERENCES Item(idItem)
@@ -120,7 +120,7 @@ CREATE TABLE Magia_Livro (
 );  
 
 CREATE TABLE Clima (
-	Id int not null,
+	Id int AUTO_INCREMENT not null,
     Descricao varchar(50) not null,
     Nome varchar(20) not null,
     Tipo_vantagem char(1) not null,
@@ -128,10 +128,10 @@ CREATE TABLE Clima (
     CONSTRAINT clima_pk PRIMARY KEY(Id),
     CONSTRAINT tipo_vantagem_clima CHECK (Tipo_vantagem IN ('1', '2', '3', '4', '5')),
     CONSTRAINT tipo_desvantagem_clima CHECK (Tipo_desvantagem IN ('1', '2', '3', '4', '5'))
-); 
+);  
 
 CREATE TABLE Regiao (
-	Id int not null,
+	Id int AUTO_INCREMENT not null,
     idClima int not null,
     Nome varchar(20) not null,
     Descricao varchar(50) not null,
@@ -171,7 +171,7 @@ CREATE TABLE esta (
 ); 
 
 CREATE TABLE NPC (
-	idNPC int not null,
+	idNPC int AUTO_INCREMENT not null,
     nome varchar(20) not null,
     raca char(1) not null,
     sexo char(1) not null,
@@ -202,7 +202,7 @@ CREATE TABLE Inimigo (
 ); 
 
 CREATE TABLE InstanciaNPC (
-	id int not null,
+	id int AUTO_INCREMENT not null,
     idNPC int not null,
     CONSTRAINT instancianpc_pk PRIMARY KEY(id),
 	CONSTRAINT instancianpc_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC)
@@ -220,7 +220,7 @@ CREATE TABLE interage (
     idJogador int not null,
     idInstanciaNPC int not null,
     texto varchar(100) not null,
-    numDialogo int not null,
+    numDialogo int AUTO_INCREMENT not null,
     status int not null,
     CONSTRAINT interage_pk PRIMARY KEY(numDialogo),
 	CONSTRAINT interage_fk_jogador FOREIGN KEY(idJogador) REFERENCES Jogador(id_jogador),
@@ -249,7 +249,7 @@ CREATE TABLE compra (
 ); 
 
 CREATE TABLE Missao (
-    idMissao int not null,
+    idMissao int AUTO_INCREMENT not null,
     nome varchar(20) not null,
     descricao varchar(100) not null,
     recDinheiro int not null,
