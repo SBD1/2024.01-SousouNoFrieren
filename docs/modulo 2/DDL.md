@@ -13,7 +13,19 @@ CREATE TABLE Jogador (
     defensa int not null,
     ataque int not null,
     CONSTRAINT jogador_pk PRIMARY KEY(id_jogador),
-	CONSTRAINT sexo_jogador CHECK (tipo IN ('1', '2'))
+	CONSTRAINT sexo_jogador CHECK (tipo IN ('1', '2')),
+	CONSTRAINT jogador_positive_values CHECK ( 
+	vidaMaxima >= 0 
+	AND vidaAtual >= 0 
+	AND manaMaxima >= 0 
+	AND manaAtual >= 0 
+	AND dinheiro >= 0 
+	AND experiencia >= 0 
+	AND defensa >= 0 
+	AND ataque >= 0),
+	CONSTRAINT jogador_max_valores CHECK (
+    vidaMaxima >= vidaAtual AND
+    manaMaxima >= manaAtual)
 ); 
 
 CREATE TABLE Inventario (
