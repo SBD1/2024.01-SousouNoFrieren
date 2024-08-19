@@ -12,7 +12,8 @@ CREATE TABLE Jogador (
     experiencia int not null,
     defensa int not null,
     ataque int not null,
-    CONSTRAINT jogador_pk PRIMARY KEY(id_jogador)
+    CONSTRAINT jogador_pk PRIMARY KEY(id_jogador),
+	CONSTRAINT sexo_jogador CHECK (tipo IN ('1', '2'))
 ); 
 
 CREATE TABLE Inventario (
