@@ -51,7 +51,10 @@ CREATE TABLE guarda (
     quantidade int not null,
     idInstancia_Item int not null,
     CONSTRAINT guarda_fk_inv FOREIGN KEY(idInventario) REFERENCES Inventario(id_inventario),
-    CONSTRAINT guarda_fk_instanciaitem FOREIGN KEY(idInstancia_Item) REFERENCES Instancia_Item(Id)
+    CONSTRAINT guarda_fk_instanciaitem FOREIGN KEY(idInstancia_Item) REFERENCES Instancia_Item(Id),
+	CONSTRAINT chk_guarda_valores CHECK (
+		quantidade >= 0 
+	)
 ); 
 
 CREATE TABLE Nivel (
@@ -244,7 +247,10 @@ CREATE TABLE ProvedorDeMissao (
 CREATE TABLE Vendedor (
     idNPC int not null,
     dinheiro int not null,
-	CONSTRAINT vendedor_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC)
+	CONSTRAINT vendedor_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC),
+	CONSTRAINT chk_vendedor_valores CHECK (
+		dinheiro >= 0
+	)
 ); 
 
 CREATE TABLE Inimigo (
@@ -254,7 +260,17 @@ CREATE TABLE Inimigo (
     manaMaxima int not null,
     defesa int not null,
     ataque int not null,
-	CONSTRAINT inimigo_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC)
+	CONSTRAINT inimigo_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC),
+	CONSTRAINT chk_inimigo_valores CHECK (
+		vidaMaxima >= 0 AND
+		vidaAtual >= 0 AND
+		manaMaxima >= 0 AND
+		defesa >= 0 AND
+		ataque >= 0
+	),
+	CONSTRAINT chk_inimigo_maxvalores CHECK (
+		vidaMaxima >= vidaAtual
+	)
 ); 
 
 CREATE TABLE InstanciaNPC (
@@ -280,7 +296,8 @@ CREATE TABLE interage (
     status int not null,
     CONSTRAINT interage_pk PRIMARY KEY(numDialogo),
 	CONSTRAINT interage_fk_jogador FOREIGN KEY(idJogador) REFERENCES Jogador(id_jogador),
-    CONSTRAINT interage_fk_instancianpc FOREIGN KEY(idInstanciaNPC) REFERENCES InstanciaNPC(id)
+    CONSTRAINT interage_fk_instancianpc FOREIGN KEY(idInstanciaNPC) REFERENCES InstanciaNPC(id),
+	CONSTRAINT interage_status CHECK (status IN ('1', '2', '3'))
 ); 
 
 CREATE TABLE usa (
@@ -312,7 +329,11 @@ CREATE TABLE Missao (
     recExp int not null,
     idNPC int not null,
     CONSTRAINT missao_pk PRIMARY KEY(idMissao),
-	CONSTRAINT missao_fk_npc FOREIGN KEY(idNPC) REFERENCES ProvedorDeMissao(idNPC)
+	CONSTRAINT missao_fk_npc FOREIGN KEY(idNPC) REFERENCES ProvedorDeMissao(idNPC),
+	CONSTRAINT chk_missao_valores CHECK (
+		recDinheiro >= 0 AND
+		recExp >= 0
+	)
 ); 
 
 CREATE TABLE recompensa (
