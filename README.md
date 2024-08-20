@@ -26,3 +26,7 @@ A exploração é um aspecto fundamental, completa masmorras, ajuda as pessoas c
     * [Diagrama Entidade-Relacionamento](./docs/modulo%201/DER.md)<br>
     * [Diagrama relacional](./docs/modulo%201/Relacional.md)<br>
     * [Dicionário de dados](./docs/modulo%201/DicionarioDeDados.md)<br>
+* Modulo 2
+    * [Linguagem de Definição de Dados](./docs/modulo%202/DDL.md)<br>
+    * [Linguagem de Manipulação de Dados](./docs/modulo%202/DML.md)<br>
+    * [Linguagem de Consulta de Dados](./docs/modulo%202/DQL.md)<br>
