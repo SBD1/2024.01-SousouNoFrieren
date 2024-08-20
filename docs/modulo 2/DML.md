@@ -4,6 +4,10 @@
 |------------|--------|-----------|-------|
 | 20/08/2024 | 1.0 | Primeira versão concluída | [Sebastián Zuzunaga](https://github.com/sebazac332) |
 
+# Linguagem de Manipulação de Dados
+
+A linguagem de manipulação de dados (Data Manipulation Language) é usada para trabalhar com os dados que irão dentro das tabelas, este nos permite inserir novos dados, modificar dados já existentes e eliminar dados que não são mais necessários.
+
 ```
 
 INSERT INTO Jogador (nome, sexo, vidaMaxima, vidaAtual, manaMaxima, manaAtual, dinheiro, experiencia, defensa, ataque) VALUES

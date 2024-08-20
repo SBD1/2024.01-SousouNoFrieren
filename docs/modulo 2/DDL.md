@@ -4,6 +4,10 @@
 |------------|--------|-----------|-------|
 | 20/08/2024 | 1.0 | Primeira versão concluída | [Sebastián Zuzunaga](https://github.com/sebazac332) |
 
+# Linguagem de Definição de Dados
+
+Usamos a linguagem de definição de dados (Data Definition Language) para criar as tabelas que irão representar entidades e certas relações entre elas dentro do banco de dados. Também usamos constraints para garantir certas dependências entre dados de diferentes tabelas e para a inserção correta e modificação dos mesmos.
+
 ```
 
 CREATE TABLE Jogador (

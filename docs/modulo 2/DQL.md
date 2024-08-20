@@ -4,6 +4,10 @@
 |------------|--------|-----------|-------|
 | 20/08/2024 | 1.0 | Primeira versão concluída | [Sebastián Zuzunaga](https://github.com/sebazac332) |
 
+# Linguagem de Consulta de Dados
+
+A linguagem de consulta de dados (Data Query Language) nos permite recuperar os dados armazenados nas diferentes tabelas do banco de dados, além disso também nos permite aplicar filtros e condições que nos ajudam a obter dados mais relevantes.
+
 ```
 -- Visualizar arma, suas estatísticas e quantidade existente
 SELECT DISTINCT 
