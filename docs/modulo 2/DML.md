@@ -71,4 +71,145 @@ VALUES
 (9, 'Cura menor', 'Regenera uma pequena quantidade de saúde', 15, 3, 20, 25),
 (10, 'Proteção inferior', 'Cria uma barreira que diminui ligeiramente o dano recebido', 15, 2, 20, 30);
 
+INSERT INTO Instancia_Item (idItem)
+VALUES 
+(1),
+(1),
+(2),
+(2),
+(5),
+(5),
+(3),
+(4),
+(8),
+(8),
+(9),
+(10);
+
+INSERT INTO NPC (nome, raca, sexo)
+VALUES 
+('Mark', '2', '1'),
+('Vendedora', '2', '2'),
+('Inimigo', '1', '1');
+
+INSERT INTO ProvedorDeMissao (idNPC)
+VALUES 
+(1);
+
+INSERT INTO Vendedor (idNPC, dinheiro)
+VALUES 
+(2, 250);
+
+INSERT INTO Inimigo (idNPC, vidaMaxima, vidaAtual, manaMaxima, defesa, ataque)
+VALUES 
+(3, 120, 120, 50, 20, 25);
+
+INSERT INTO InstanciaNPC (idNPC)
+VALUES 
+(1),
+(2),
+(2),
+(3),
+(3),
+(3);
+
+INSERT INTO Missao (nome, descricao, recDinheiro, recExp, idNPC)
+VALUES 
+('Missao teste', 'Eliminar 3 inimigos', 50, 20, 1),
+('Missao teste 2', 'Obter 1 espada', 100, 40, 1);
+
+INSERT INTO usa (idNPC, magiaNome)
+VALUES 
+(3, 'bola de fogo');
+
+INSERT INTO vende (idNPC, idInstancia_Item)
+VALUES 
+(2, 8),
+(2, 3);
+
+INSERT INTO compra (idNPC, idInstancia_Item)
+VALUES 
+(2, 11),
+(2, 12),
+(2, 13);
+
+INSERT INTO recompensa (idMissao, idInstancia_Item)
+VALUES 
+(2, 11),
+(3, 13);
+
+INSERT INTO guarda (idInventario, quantidade, idInstancia_Item)
+VALUES 
+(10, 1, 2),
+(11, 1, 5);
+
+INSERT INTO faz (idJogador, idMissao, status)
+VALUES 
+(1, 2, 1),
+(2, 3, 2);
+
+INSERT INTO interage (idJogador, idInstanciaNPC, texto, status)
+VALUES 
+(1, 1, 'Oi, bom dia', 1),
+(2, 2, 'Oi boa tarde', 1);
+
+INSERT INTO Clima (Descricao, Nome, Tipo_vantagem, Tipo_desvantagem)
+VALUES 
+('Grandes quantidades de água caindo do céu', 'chuva', 3, 1),
+('Clima seco, falta de água em toda a região', 'Seca', 2, 3),
+('Ventos fortes e trovões', 'Tempestade', 5, 1);
+
+INSERT INTO Regiao (idClima, Nome, Descricao)
+VALUES 
+(1, 'Regiao_teste_1', 'Região inicial, planícies com muita vegetação'),
+(3, 'Regiao_teste_2', 'Região montanhosa de tempestades permanentes');
+
+INSERT INTO Local (posX, posY, Nome, descricao, reqEntrada, tipo, idRegiao)
+VALUES 
+(0, 0, 'Spawn', 'Onde o jogador começa', null, 2, 3),
+(0, 1, 'Entrada na floresta', 'Entrada para uma floresta frondosa', null, 2, 3),
+(1, 0, 'Caminho da cidade', 'Início de uma estrada que leva à cidade inicial', null, 2, 3),
+(1, 1, 'Lagoa', 'Pequena lagoa, conecta entrada com a estrada', null, 2, 3),
+(0, 2, 'Sala do inimigo', 'Alguns inimigos aparecem aqui', null, 2, 3),
+(2, 0, 'Metade do caminho', 'Parte do caminho que leva ao povo', null, 2, 3),
+(2, 1, 'Sala de Mark', 'Aqui está o Mark', null, 2, 3),
+(1, 2, 'Sala da árvore', 'Aqui há uma grande árvore', null, 2, 3),
+(2, 2, 'Aldeia inicial', 'Primeira cidade que o jogador encontrou', null, 1, 3);
+
+INSERT INTO leva (posXOrigem, posYOrigem, posXDestino, posYDestino)
+VALUES 
+(0, 0, 0, 1),
+(0, 0, 1, 0),
+(0, 1, 1, 1),
+(0, 1, 0, 0),
+(0, 1, 0, 2),
+(0, 2, 0, 1),
+(0, 2, 1, 2),
+(1, 2, 0, 2),
+(1, 0, 2, 0),
+(1, 0, 1, 1),
+(1, 0, 0, 0),
+(1, 1, 1, 0),
+(1, 1, 0, 1),
+(1, 1, 1, 0),
+(2, 0, 2, 1),
+(2, 1, 2, 0),
+(2, 0, 2, 2),
+(2, 2, 2, 0);
+
+INSERT INTO esta (idJogador, posX, posY)
+VALUES 
+(1, 0, 0),
+(2, 0, 0),
+(3, 1, 0);
+
+INSERT INTO aparece (posX, posY, idInstanciaNPC)
+VALUES 
+(0, 2, 4),
+(0, 2, 5),
+(0, 2, 6),
+(2, 1, 1),
+(2, 2, 2),
+(2, 2, 3);
+
 ```
