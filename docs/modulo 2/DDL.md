@@ -1,3 +1,9 @@
+# Versionamento
+
+| Data       | Versão | Descrição | Autor |
+|------------|--------|-----------|-------|
+| 20/08/2024 | 1.0 | Primeira versão concluída | [Sebastián Zuzunaga](https://github.com/sebazac332) |
+
 ```
 
 CREATE TABLE Jogador (
