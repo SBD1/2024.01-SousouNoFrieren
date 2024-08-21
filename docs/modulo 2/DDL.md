@@ -60,8 +60,9 @@ CREATE TABLE guarda (
 	idInventario int not null,
     quantidade int not null,
     idInstancia_Item int not null,
+    idItem int not null,
     CONSTRAINT guarda_fk_inv FOREIGN KEY(idInventario) REFERENCES Inventario(id_inventario),
-    CONSTRAINT guarda_fk_instanciaitem FOREIGN KEY(idInstancia_Item) REFERENCES Instancia_Item(Id),
+    CONSTRAINT guarda_fk_instanciaitem FOREIGN KEY(idInstancia_Item, idItem) REFERENCES Instancia_Item(Id, idItem),
 	CONSTRAINT chk_guarda_valores CHECK (
 		quantidade >= 0 
 	)
@@ -114,7 +115,7 @@ CREATE TABLE NaoConsumivel (
 	idItem int not null,
 	estaEquipado char(1) not null,
     CONSTRAINT item_fk_naocon FOREIGN KEY(idItem) REFERENCES Item(idItem),
-	CONSTRAINT estaequipado_naoconsumivel CHECK (estaEquipado IN ('1', '2'));
+	CONSTRAINT estaequipado_naoconsumivel CHECK (estaEquipado IN ('1', '2'))
 ); 
 
 CREATE TABLE Arma (
@@ -294,19 +295,21 @@ CREATE TABLE aparece (
     posX int not null,
     posY int not null,
     idInstanciaNPC int not null,
-	CONSTRAINT aparece_fk_instancianpc FOREIGN KEY(idInstanciaNPC) REFERENCES InstanciaNPC(id),
+    idNPC int not null,
+	CONSTRAINT aparece_fk_instancianpc FOREIGN KEY(idInstanciaNPC, idNPC) REFERENCES InstanciaNPC(id, idNPC),
     CONSTRAINT aparece_fk_local FOREIGN KEY(posX, posY) REFERENCES Local(posX, posY)
-); 
+);  
 
 CREATE TABLE interage (
     idJogador int not null,
     idInstanciaNPC int not null,
+    idNPC int not null,
     texto varchar(100) not null,
     numDialogo int AUTO_INCREMENT not null,
     status int not null,
     CONSTRAINT interage_pk PRIMARY KEY(numDialogo),
 	CONSTRAINT interage_fk_jogador FOREIGN KEY(idJogador) REFERENCES Jogador(id_jogador),
-    CONSTRAINT interage_fk_instancianpc FOREIGN KEY(idInstanciaNPC) REFERENCES InstanciaNPC(id),
+    CONSTRAINT interage_fk_instancianpc FOREIGN KEY(idInstanciaNPC, idNPC) REFERENCES InstanciaNPC(id, idNPC),
 	CONSTRAINT interage_status CHECK (status IN ('1', '2', '3'))
 ); 
 
@@ -349,8 +352,9 @@ CREATE TABLE Missao (
 CREATE TABLE recompensa (
     idMissao int not null,
     idInstancia_Item int not null,
+    idItem int not null,
     CONSTRAINT recompensa_fk_missao FOREIGN KEY(idMissao) REFERENCES Missao(idMissao),
-	CONSTRAINT recompensa_fk_instanciaitem FOREIGN KEY(idInstancia_Item) REFERENCES Instancia_Item(Id)
+	CONSTRAINT recompensa_fk_instanciaitem FOREIGN KEY(idInstancia_Item, idItem) REFERENCES Instancia_Item(Id, idItem)
 ); 
 
 CREATE TABLE faz (
