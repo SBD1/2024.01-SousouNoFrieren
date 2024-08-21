@@ -20,6 +20,7 @@ A exploração é um aspecto fundamental, completa masmorras, ajuda as pessoas c
 | Módulo | Link da gravação	 | Data |
 |----------|------|------------|
 | 1 | [Apresentação Módulo 1](https://unbbr-my.sharepoint.com/personal/211006957_aluno_unb_br/_layouts/15/stream.aspx?id=%2Fpersonal%2F211006957%5Faluno%5Funb%5Fbr%2FDocuments%2FBase%20de%20dados%20%2D%20modulo1%2Emp4&referrer=OfficeHome%2EWeb&referrerScenario=UPLOAD)<br> | 22/07/2024 |
+| 2 | [Apresentação Módulo 2](https://unbbr-my.sharepoint.com/:v:/g/personal/211006957_aluno_unb_br/EQkgBRMvrHRColDTPpJ4WpIBn-JH8MmHbRJIQDQOEMlTdA?e=fQTbUb&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)<br> | 21/08/2024 |
 
 ## Entregas
 * Modulo 1
