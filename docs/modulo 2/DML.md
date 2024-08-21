@@ -132,36 +132,36 @@ INSERT INTO usa (idNPC, magiaNome)
 VALUES 
 (3, 'bola de fogo');
 
-INSERT INTO vende (idNPC, idInstancia_Item)
+INSERT INTO vende (idNPC, idInstancia_Item, idItem)
 VALUES 
-(2, 8),
-(2, 3);
+(2, 8, 4),
+(2, 3, 2);
 
-INSERT INTO compra (idNPC, idInstancia_Item)
+INSERT INTO compra (idNPC, idInstancia_Item, idItem)
 VALUES 
-(2, 11),
-(2, 12),
-(2, 13);
+(2, 10, 8),
+(2, 11, 9),
+(2, 12, 10);
 
-INSERT INTO recompensa (idMissao, idInstancia_Item)
+INSERT INTO recompensa (idMissao, idInstancia_Item, idItem)
 VALUES 
-(2, 11),
-(3, 13);
+(1, 11, 9),
+(2, 12, 10);
 
-INSERT INTO guarda (idInventario, quantidade, idInstancia_Item)
+INSERT INTO guarda (idInventario, quantidade, idInstancia_Item, idItem)
 VALUES 
-(10, 1, 2),
-(11, 1, 5);
+(1, 1, 2, 1),
+(2, 1, 5, 5);
 
 INSERT INTO faz (idJogador, idMissao, status)
 VALUES 
-(1, 2, 1),
-(2, 3, 2);
+(1, 1, 1),
+(2, 2, 2);
 
-INSERT INTO interage (idJogador, idInstanciaNPC, texto, status)
+INSERT INTO interage (idJogador, idInstanciaNPC, idNPC, texto, status)
 VALUES 
-(1, 1, 'Oi, bom dia', 1),
-(2, 2, 'Oi boa tarde', 1);
+(1, 1, 1, 'Oi, bom dia', 1),
+(2, 3, 2, 'Oi boa tarde', 1);
 
 INSERT INTO Clima (Descricao, Nome, Tipo_vantagem, Tipo_desvantagem)
 VALUES 
@@ -176,15 +176,15 @@ VALUES
 
 INSERT INTO Local (posX, posY, Nome, descricao, reqEntrada, tipo, idRegiao)
 VALUES 
-(0, 0, 'Spawn', 'Onde o jogador começa', null, 2, 3),
-(0, 1, 'Entrada na floresta', 'Entrada para uma floresta frondosa', null, 2, 3),
-(1, 0, 'Caminho da cidade', 'Início de uma estrada que leva à cidade inicial', null, 2, 3),
-(1, 1, 'Lagoa', 'Pequena lagoa, conecta entrada com a estrada', null, 2, 3),
-(0, 2, 'Sala do inimigo', 'Alguns inimigos aparecem aqui', null, 2, 3),
-(2, 0, 'Metade do caminho', 'Parte do caminho que leva ao povo', null, 2, 3),
-(2, 1, 'Sala de Mark', 'Aqui está o Mark', null, 2, 3),
-(1, 2, 'Sala da árvore', 'Aqui há uma grande árvore', null, 2, 3),
-(2, 2, 'Aldeia inicial', 'Primeira cidade que o jogador encontrou', null, 1, 3);
+(0, 0, 'Spawn', 'Onde o jogador começa', null, 2, 1),
+(0, 1, 'Entrada na floresta', 'Entrada para uma floresta frondosa', null, 2, 1),
+(1, 0, 'Caminho da cidade', 'Início de uma estrada que leva à cidade inicial', null, 2, 1),
+(1, 1, 'Lagoa', 'Pequena lagoa, conecta entrada com a estrada', null, 2, 1),
+(0, 2, 'Sala do inimigo', 'Alguns inimigos aparecem aqui', null, 2, 1),
+(2, 0, 'Metade do caminho', 'Parte do caminho que leva ao povo', null, 2, 1),
+(2, 1, 'Sala de Mark', 'Aqui está o Mark', null, 2, 1),
+(1, 2, 'Sala da árvore', 'Aqui há uma grande árvore', null, 2, 1),
+(2, 2, 'Aldeia inicial', 'Primeira cidade que o jogador encontrou', null, 1, 1);
 
 INSERT INTO leva (posXOrigem, posYOrigem, posXDestino, posYDestino)
 VALUES 
@@ -213,13 +213,13 @@ VALUES
 (2, 0, 0),
 (3, 1, 0);
 
-INSERT INTO aparece (posX, posY, idInstanciaNPC)
+INSERT INTO aparece (posX, posY, idInstanciaNPC, idNPC)
 VALUES 
-(0, 2, 4),
-(0, 2, 5),
-(0, 2, 6),
-(2, 1, 1),
-(2, 2, 2),
-(2, 2, 3);
+(0, 2, 4, 3),
+(0, 2, 5, 3),
+(0, 2, 6, 3),
+(2, 1, 1, 1),
+(2, 2, 2, 2),
+(2, 2, 3, 2);
 
 ```
