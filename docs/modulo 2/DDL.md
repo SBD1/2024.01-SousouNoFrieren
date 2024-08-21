@@ -23,7 +23,7 @@ CREATE TABLE Jogador (
     defensa int not null,
     ataque int not null,
     CONSTRAINT jogador_pk PRIMARY KEY(id_jogador),
-	CONSTRAINT sexo_jogador CHECK (tipo IN ('1', '2')),
+	CONSTRAINT sexo_jogador CHECK (sexo IN ('1', '2')),
 	CONSTRAINT jogador_positive_values CHECK ( 
 		vidaMaxima >= 0 
 		AND vidaAtual >= 0 
@@ -108,7 +108,8 @@ CREATE TABLE Instancia_Item (
 	Id int AUTO_INCREMENT not null,
 	idItem int not null,
     CONSTRAINT item_instancia_pk PRIMARY KEY(Id),
-    CONSTRAINT item_fk_instancia FOREIGN KEY(idItem) REFERENCES Item(idItem)
+    CONSTRAINT item_fk_instancia FOREIGN KEY(idItem) REFERENCES Item(idItem),
+	CONSTRAINT item_instancia_unique UNIQUE (Id, idItem)
 ); 
 
 CREATE TABLE NaoConsumivel (
@@ -288,8 +289,9 @@ CREATE TABLE InstanciaNPC (
 	id int AUTO_INCREMENT not null,
     idNPC int not null,
     CONSTRAINT instancianpc_pk PRIMARY KEY(id),
-	CONSTRAINT instancianpc_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC)
-); 
+	CONSTRAINT instancianpc_fk_npc FOREIGN KEY(idNPC) REFERENCES NPC(idNPC),
+    CONSTRAINT item_instancia_unique UNIQUE (id, idNPC)
+);  
 
 CREATE TABLE aparece (
     posX int not null,
@@ -323,16 +325,18 @@ CREATE TABLE usa (
 CREATE TABLE vende (
     idNPC int not null,
     idInstancia_Item int not null,
+    idItem int not null,
 	CONSTRAINT vende_fk_npc FOREIGN KEY(idNPC) REFERENCES Vendedor(idNPC),
-    CONSTRAINT vende_fk_instanciaitem FOREIGN KEY(idInstancia_Item) REFERENCES Instancia_Item(Id)
+    CONSTRAINT vende_fk_instanciaitem FOREIGN KEY(idInstancia_Item, idItem) REFERENCES Instancia_Item(Id, idItem)
 ); 
 
 CREATE TABLE compra (
     idNPC int not null,
     idInstancia_Item int not null,
+    idItem int not null,
 	CONSTRAINT compra_fk_npc FOREIGN KEY(idNPC) REFERENCES Vendedor(idNPC),
-    CONSTRAINT compra_fk_instanciaitem FOREIGN KEY(idInstancia_Item) REFERENCES Instancia_Item(Id)
-); 
+    CONSTRAINT compra_fk_instanciaitem FOREIGN KEY(idInstancia_Item, idItem) REFERENCES Instancia_Item(Id, idItem)
+);  
 
 CREATE TABLE Missao (
     idMissao int AUTO_INCREMENT not null,
